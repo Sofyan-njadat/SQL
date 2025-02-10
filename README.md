@@ -1,2 +1,2 @@
-# SQL-Topics
+# SQL
 SQL Daily Topics 
