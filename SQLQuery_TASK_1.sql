@@ -48,21 +48,30 @@ SELECT
     b.BookCategory
 FROM Books b
 JOIN Authors a ON b.AuthorID = a.AuthorID;
+--*or*--
+select * from Books;
+select * from Authors;
 
 /*******************************************/
-SELECT TOP 1 * FROM Books ORDER BY CopiesAvailable DESC;
+SELECT top 1* FROM Books ORDER BY CopiesAvailable DESC;
+--**or**--
+select min (CopiesAvailable)  from Books;
 
 SELECT TOP 1 * FROM Books ORDER BY CopiesAvailable ASC;
+--**or**--
+select max (CopiesAvailable)  from Books;
 
 /*******************************************/
 SELECT AVG(PublishedYear) AS AveragePublicationYear FROM Books;
+--**or**--
+select avg (PublishedYear) from Books;
 
 /*******************************************/
 SELECT COUNT(*) AS TotalBooks FROM Books;
-
+--**or**--
+select count (*) from Books;
 /*******************************************/
 TRUNCATE TABLE Books;
-DELETE FROM Books;
 
 /*******************************************/
 ALTER TABLE Authors
@@ -74,7 +83,3 @@ DROP TABLE Authors;
 
 
 
----------/////////////////////////////////////////----------
-select * from Authors;
-select * from Books;
----------/////////////////////////////////////////----------
