@@ -9,7 +9,7 @@ email varchar(100) unique,
 hire_date date
 );
 
-/** inset **/
+/** insert **/
 INSERT INTO employee (id , name , email , hire_date)
 VALUES (1, 'Ahmad Ali', 'ahmad@example.com', '2025-02-01');
 
@@ -68,7 +68,54 @@ select sum (salary) from employee ;
 
 
 
-select * from employee;
+
+
+----------------/////////////////////////////////////////////////////////////////////-----------------------
+
+
+
+-- إنشاء جدول الموظفين
+CREATE TABLE Employees01 (
+    EmployeeID INT PRIMARY KEY,
+    Name VARCHAR(100)
+);
+
+-- إنشاء جدول تفاصيل الموظفين
+CREATE TABLE EmployeeDetails01 (
+    EmployeeID INT PRIMARY KEY,
+    Address VARCHAR(255),
+    PhoneNumber VARCHAR(20),
+    FOREIGN KEY (EmployeeID) REFERENCES Employees01(EmployeeID)
+);
+
+-- إدراج بيانات في جدول الموظفين
+INSERT INTO Employees01 (EmployeeID, Name) VALUES
+(1, 'أحمد محمد'),
+(2, 'سارة علي'),
+(3, 'سفيان يوسف'),
+(4, 'محمد يوسف'),
+(5, 'سامح يوسف');
+
+-- إدراج بيانات في جدول تفاصيل الموظفين
+INSERT INTO EmployeeDetails01 (EmployeeID, Address, PhoneNumber) VALUES
+(1, 'شارع الملك فهد، الرياض', '0501234567'),
+(2, 'شارع العليا، جدة', '0557654321'),
+(3, 'حي النسيم، الدمام', '0539876543');
+
+
+SELECT Employees01.Name, EmployeeDetails01.Address, EmployeeDetails01.PhoneNumber
+FROM Employees01
+INNER JOIN EmployeeDetails01 ON Employees01.EmployeeID = EmployeeDetails01.EmployeeID;
+
+
+SELECT Employees01.Name, EmployeeDetails01.Address, EmployeeDetails01.PhoneNumber
+FROM Employees01
+LEFT JOIN EmployeeDetails01 ON Employees01.EmployeeID = EmployeeDetails01.EmployeeID;
+
+
+
+
+
 
 
 
